@@ -1,0 +1,290 @@
+/* ===== Peacock Green Professional Theme ===== */
+:root {
+  --peacock-dark: #00695C;
+  --peacock-primary: #00897B;
+  --peacock-light: #4DB6AC;
+  --peacock-accent: #B2DFDB;
+  --peacock-text: #E0F2F1;
+  --peacock-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --peacock-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* ===== Base Styles ===== */
+body {
+  font-family: 'Montserrat', 'Helvetica Neue', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+  min-height: 100vh;
+  position: relative;
+  padding-bottom: 80px;
+}
+
+/* ===== Header Styles (Matches Index Exactly) ===== */
+.header {
+  background: linear-gradient(135deg, var(--peacock-dark), var(--peacock-primary));
+  color: var(--peacock-text);
+  padding: 1.5rem 0;
+  position: relative;
+  box-shadow: var(--peacock-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.logo-1 {
+  margin-right: 1.5rem;
+  border-radius: 50%;
+  border: 3px solid var(--peacock-text);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.logo-1:hover {
+  transform: rotate(10deg) scale(1.05);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.img-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  right: 2rem;
+  border: 2px solid var(--peacock-text);
+  cursor: pointer;
+  transition: var(--peacock-transition);
+  object-fit: cover;
+}
+
+.img-avatar:hover {
+  transform: scale(1.1);
+  border-color: var(--peacock-accent);
+}
+
+.header button {
+  position: absolute;
+  right: 2rem;
+  top: 5.5rem;
+  background-color: var(--peacock-light);
+  color: white;
+  border: none;
+  padding: 0.5rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: var(--peacock-transition);
+  box-shadow: var(--peacock-shadow);
+  font-size: 0.8rem;
+}
+
+.header button:hover {
+  background-color: var(--peacock-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== Navigation Styles ===== */
+.topnavi {
+  background-color: var(--peacock-dark);
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.topnavi a {
+  color: var(--peacock-text);
+  text-align: center;
+  padding: 1rem 1.5rem;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: var(--peacock-transition);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  letter-spacing: 0.5px;
+  position: relative;
+}
+
+.topnavi a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+}
+
+.topnavi a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background-color: var(--peacock-accent);
+  transition: var(--peacock-transition);
+}
+
+.topnavi a:hover::before {
+  width: 80%;
+}
+
+/* ===== Footer Styles (Matches Index Exactly) ===== */
+.footer {
+  background: linear-gradient(to right, var(--peacock-dark), var(--peacock-primary));
+  color: var(--peacock-text);
+  text-align: center;
+  padding: 1.5rem 1rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.footer p {
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.footer a {
+  color: var(--peacock-accent);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--peacock-transition);
+  font-weight: 500;
+}
+
+.footer a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+/* ===== Support Button (Matches Index Exactly) ===== */
+.support {
+  position: fixed;
+  bottom: 5.5rem;
+  right: 2rem;
+  background-color: var(--peacock-primary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: var(--peacock-transition);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.support:hover {
+  background-color: var(--peacock-dark);
+  transform: scale(1.1) translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== Admin Form Specific Styles ===== */
+.add-button {
+  background-color: var(--peacock-primary);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--peacock-transition);
+  box-shadow: var(--peacock-shadow);
+}
+
+.add-button:hover {
+  background-color: var(--peacock-dark);
+  transform: translateY(-2px);
+}
+
+.form-popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1001;
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 500px;
+}
+
+/* ===== Responsive Adjustments ===== */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    padding: 1rem 0;
+  }
+  
+  .header h1 {
+    font-size: 1.8rem;
+    margin: 0.5rem 0;
+  }
+  
+  .logo-1 {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+  
+  .img-avatar {
+    position: static;
+    margin-top: 0.5rem;
+  }
+  
+  .header button {
+    position: static;
+    margin-top: 0.8rem;
+  }
+  
+  .topnavi {
+    flex-wrap: wrap;
+  }
+  
+  .footer p {
+    gap: 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .support {
+    bottom: 5rem;
+    right: 1rem;
+    width: 45px;
+    height: 45px;
+    font-size: 1rem;
+  }
+}

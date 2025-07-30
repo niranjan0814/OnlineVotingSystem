@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="css/style.css">
+
+  <title>Vote Form</title>
+</head>
+<body>
+  <video autoplay muted loop id="video-background">
+    <source src="image/video.mp4" type="video/mp4">
+  </video>
+
+  <div class="login-wrap">
+    <div class="login-html">
+      <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+      <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+      <div class="login-form">
+        <div class="sign-in-htm">
+          
+
+         <!--sign in-->
+          <form method="post" action="signin.php" id="signin-form">
+            <div class="group">
+              <label for="email" class="label">Email</label>
+              <input id="email" type="email" class="input" name="email" required>
+            </div>
+            <div class="group">
+              <label for="password1" class="label">Password</label>
+              <input id="password1" type="password" class="input" data-type="password" name="password1" required>
+            </div>
+            <div class="group">
+              <input id="check" type="checkbox" class="check" checked>
+              <label for="check"><span class="icon"></span> Keep me Signed in</label>
+            </div>
+            <div class="group">
+              <input type="submit" class="button" value="SignIn" name="signIn">
+            </div>
+          </form>
+
+          <div class="hr"></div>
+          <div class="foot-lnk">
+            <a href="forgotpassword.php">Forgot Password?</a>
+          </div>
+        </div>
+
+        <div class="sign-up-htm">
+          
+          <!--Sign up-->
+          <form method="post" action="signup.php" id="signup-form">
+            <div class="group">
+              <label for="username2" class="label">Username</label>
+              <input id="username2" type="text" class="input" name="username2" required>
+              <p id="usernameError"></p>
+            </div>
+            <div class="group">
+              <label for="password2" class="label">Password</label>
+              <input id="password2" type="password" class="input" data-type="password" name="password2" required>
+              <p id="passwordError"></p>
+            </div>
+            <div class="group">
+              <label for="confirmpassword" class="label">Confirm Password</label>
+              <input id="confirmpassword" type="password" class="input" data-type="password" name="cpassword" required>
+              <p id="confirmPasswordError"></p>
+            </div>  
+            <div class="group">
+              <label for="email" class="label">Email Address</label>
+              <input id="email" type="email" class="input" name="email" required>
+              <p id="emailError"></p>
+            </div>
+            <div class="group">
+              <label for="phonenumber" class="label">Phone Number</label>
+              <input id="phonenumber" type="tel" class="input" name="phonenumber" required>
+              <p id="phoneNumberError"></p>
+            </div>
+            <div class="group">
+              <label for="dob" class="label">Date of Birth</label>
+              <input id="dob" type="date" class="input" name="dob" required>
+            </div>
+            <div class="group">
+              <input type="submit" class="button" value="Sign Up" name="signup" id="signup">
+            </div>
+          </form>
+          <div class="hr"><hr></div>
+          <div class="foot-lnk">
+            <label for="tab-1">Already Member?</label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var username2 = document.getElementById("username2");
+    var password2 = document.getElementById("password2");
+    var confirmpassword = document.getElementById("confirmpassword");
+    var email = document.getElementById("email");
+    var phonenumber = document.getElementById("phonenumber");
+    var signup = document.getElementById("signup");
+
+    var nregex = /^[a-zA-Z]+$/;
+    var eregex = /^[a-zA-Z0-9]+@[a-zA-Z]+\.com$/;
+    var pnregex = /^\d{10}$/;
+    var pwregex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+
+    signup.addEventListener("click", function(event) {
+      var validate = true;
+
+      if (!username2.value) {
+        document.getElementById("usernameError").textContent = "Username is required";
+        validate = false;
+      } else if (!nregex.test(username2.value)) {
+        document.getElementById("usernameError").textContent = "Enter a valid username";
+        validate = false;
+      } else {
+        document.getElementById("usernameError").textContent = ""; // Clear error message
+      }
+
+      /*if (!email.value) {
+        document.getElementById("emailError").textContent = "Email address is required";
+        validate = false;
+       } else {
+        document.getElementById("emailError").textContent = ""; // Clear error message
+      }*/
+
+      if (!phonenumber.value) {
+        document.getElementById("phoneNumberError").textContent = "Phone number is required";
+        validate = false;
+      } else if (!pnregex.test(phonenumber.value)) {
+        document.getElementById("phoneNumberError").textContent = "Enter a valid phone number";
+        validate = false;
+      } else {
+        document.getElementById("phoneNumberError").textContent = ""; // Clear error message
+      }
+
+      if (!password2.value) {
+        document.getElementById("passwordError").textContent = "Password is required";
+        validate = false;
+      } else if (!pwregex.test(password2.value)) {
+        document.getElementById("passwordError").textContent = "Password must contain at least 8 characters with at least one number, one lowercase and one uppercase letter";
+        validate = false;
+      } else {
+        document.getElementById("passwordError").textContent = ""; // Clear error message
+      }
+
+      if (!confirmpassword.value) {
+        document.getElementById("confirmPasswordError").textContent = "Confirm password is required";
+        validate = false;
+      } else if (confirmpassword.value !== password2.value) {
+        document.getElementById("confirmPasswordError").textContent = "Passwords do not match";
+        validate = false;
+      } else {
+        document.getElementById("confirmPasswordError").textContent = ""; // Clear error message
+      }
+
+      if (!validate) {
+        event.preventDefault(); // Prevent form submission if validation fails
+      }
+    });
+  </script>
+</body>
+</html>

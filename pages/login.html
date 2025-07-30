@@ -1,0 +1,164 @@
+<?php
+require 'config.php';
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Vote scope</title>
+	<link rel="stylesheet" href="../../Online_voting/css/index_style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+<!-- Header from first page -->
+<div class="header">
+  <img src="../image/syslogo.png" style="width:90px;height:90px;background:none;" alt="logo" class="logo-1"> 
+  <h1 id="VOTE SCOPE">Vote scope</h1>
+  <img class="img-avatar" src="../image/img_avatar.jpg" alt="Avatar">
+  <a href="/pages/login.html"><button onclick="document.getElementById('id01').style.display='block'">Register</button></a>
+</div>
+<div class="topnavi">
+	<a class="fa fa-home" href="../pages/index.html" data-scroll-nav="0">Home</a> 
+	<a class="fa fa-phone-square" href="../pages/adminform.html" data-scroll-nav="1">Admin</a>
+	<a class="fa fa-music" href="/pages/show.php" data-scroll-nav="2">Shows</a> 
+	<a class="fa fa-music" href="/vote1.php" data-scroll-nav="3">vote</a> 
+	<a class="fa fa-star" href="/sponsor.php" data-scroll-nav="4">Sponsor</a> 
+	<a class="fa fa-users" href="/aboutus.php" data-scroll-nav="5">About us</a> 
+</div>
+
+<div class="login-wrap">
+    <div class="login-html">
+      <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+      <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+      <div class="login-form">
+        <div class="sign-in-htm">
+          <div class="group">
+		  <form method="post" action="iwt.php" id="signin-form">
+            <label for="username1" class="label">Username</label>
+            <input id="username1" type="text" class="input" name="username1">
+          </div>
+          <div class="group">
+            <label for="password1" class="label">Password</label>
+            <input id="password1" type="password" class="input" data-type="password" name="password1">
+          </div>
+          <div class="group">
+            <input id="check" type="checkbox" class="check" checked>
+            <label for="check"><span class="icon"></span> Keep me Signed in</label>
+          </div>
+          <div class="group">
+            <input type="submit" class="button" value="SignIn" name="signIn">
+          </div>
+		  </form>
+          <div class="hr"></div>
+          <div class="foot-lnk">
+            <a href="iwt3.php">Forgot Password?</a>
+          </div>
+        </div>
+        <div class="sign-up-htm">
+          <div class="group">
+		   <form method="post" action="iwt2.php" id="signup-form">
+            <label for="username2" class="label">Username</label>
+            <input id="username2" type="text" class="input" name="username2">
+          </div>
+		  <div class="group">
+            <label for="password2" class="label">Password</label>
+            <input id="password2" type="password" class="input" data-type="password" name="password2">
+          </div>
+          <div class="group">
+            <label for="confirmpassword" class="label">Confirm Password</label>
+            <input id="confirmpassword" type="password" class="input" data-type="password" name="cpassword">
+          </div>  
+          <div class="group">
+            <label for="email" class="label">Email Address</label>
+            <input id="email" type="email" class="input" name="email">
+          </div>
+		  <div class="group">
+		    <label for="phonenumber" class="label">Phone Number</label>
+			<input id="phonenumber" type="tel" class="input" name="phonenumber">
+		  </div>
+		  <div class="group">
+		    <label for="dob" class="label">Date of Birth</label>
+			<input id="dob" type="date" class="input" name="dob">
+		  </div>
+          <div class="group">
+            <input type="submit" class="button" value="SignUp" name="signup">
+          </div>
+		  </form>
+          <div class="hr"><hr></div>
+          <div class="foot-lnk">
+            <label for="tab-1">Already Member?</label>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+<!-- Footer from first page -->
+<div class="footer">
+    <p><b>copyright 2024 &copy; &nbsp; All Rights Reserved. &nbsp; Northern Uni Vote scope.</b>  
+      <a class="fa fa-envelope" href="mailto:northernunivote@gmail.com">northernunivote@gmail.com</a>  
+      <a class="fa fa-phone" href="tel:0761111222">0761111222</a>
+	</p> 
+</div>
+
+<button class="support">Support</button>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const signinForm = document.getElementById('signin-form');
+      const signupForm = document.getElementById('signup-form');
+
+      if (signinForm) {
+        signinForm.addEventListener('submit', function(event) {
+          const usernameInput = document.getElementById('username1');
+          const passwordInput = document.getElementById('password1');
+          const usernameValue = usernameInput.value.trim();
+          const passwordValue = passwordInput.value.trim();
+
+          if (!usernameValue || !passwordValue) {
+            event.preventDefault();
+            if (!usernameValue) {
+              alert("Please enter a username.");
+            }
+            if (!passwordValue) {
+              alert("Please enter a password.");
+            }
+          } else {
+            alert('Signin form submitted with username: ' + usernameValue + ' and password: ' + passwordValue);
+          }
+        });
+      }
+
+      if (signupForm) {
+        signupForm.addEventListener('submit', function(event) {
+          const usernameInput = document.getElementById('username2');
+          const passwordInput = document.getElementById('password2');
+          const confirmPasswordInput = document.getElementById('confirmpassword');
+          const emailInput = document.getElementById('email');
+          const phoneNumberInput = document.getElementById('phonenumber');
+          const dobInput = document.getElementById('dob');
+
+          const usernameValue = usernameInput.value.trim();
+          const passwordValue = passwordInput.value.trim();
+          const confirmPasswordValue = confirmPasswordInput.value.trim();
+          const emailValue = emailInput.value.trim();
+          const phoneNumberValue = phoneNumberInput.value.trim();
+          const dobValue = dobInput.value.trim();
+
+          if (!usernameValue || !passwordValue || !confirmPasswordValue || !emailValue || !phoneNumberValue || !dobValue) {
+            event.preventDefault();
+            alert("Please fill in all fields.");
+          } else {
+            alert('Signup form submitted with username: ' + usernameValue);
+          }
+        });
+      }
+    });
+</script>
+</body>
+</html>

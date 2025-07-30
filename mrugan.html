@@ -1,0 +1,124 @@
+<?php
+require 'config.php';
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset="UTF-8" />
+	<title>Vote scope</title>
+	<link rel="stylesheet" href="css/index_style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/csss.css">
+	<link rel="icon" type="image/png" href="image/logoi.png">
+  <style>
+    .data-container {
+      display: flex;
+      flex-wrap: wrap;
+      margin: 10px;
+    }
+
+    .data-box {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin: 5px;
+      width: calc(20% - 10px); /* Adjust width for 3 columns */
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="header">
+
+    <!-- Navbar -->
+<div class="header">
+  <img src="image/logoi.jpg" style="width:90px;height:90px;background:none;" alt="logo" class="logo-1"> 
+  <h1>Vote scope</h1>
+  <img class="img-avatar" src="image/img_avatar.jpg" alt="Avatar">
+  <button onclick="document.getElementById('id02').style.display='block'">Logout</button>
+</div>
+<div class="topnavi">
+  <a class="fa fa-home" href="index.html" data-scroll-nav="0">Home</a> 
+  <a class="fa fa-phone-square" href="adminform.php" data-scroll-nav="1">Admin</a>
+  <a class="fa fa-music" href="show.php" data-scroll-nav="2">Shows</a> 
+  <a class="fa fa-music" href="vote.html" data-scroll-nav="3">vote</a> 
+  <a class="fa fa-star" href="sponsor.php" data-scroll-nav="4">Sponsor</a> 
+  <a class="fa fa-users" href="aboutus.php" data-scroll-nav="5">About us</a> 
+</div>
+    
+      <!--li><a id="add" class="button" href="addcontestant.html">Logout</a></li-->
+    
+  <div id="sample show ">
+
+    <div class="container">
+      <div class="screen">
+
+
+        <h2>sample show 1</h2>
+
+        <div id="ul2">
+
+          <button id="openFormBtn" class="b1"><div id=bttn1>Add details +</div></button>
+
+          <div id="popupForm" class="popup-form">
+            <button id="closeFormBtn" class="close-btn">×</button>
+            <form action="murugan.php" method="POST" class="popup-form-content">
+              <label for="television name">Showname:
+              </label><br>
+              <input type="text" id="l2" name="show" value="CWC"><br><br>
+              <label for="television name">Television name:
+              </label><br>
+              <input type="text" id="l2" name="telivision" value="Zee tamil"><br><br>
+
+              <label id="l1" class="custom-file-label" for="filename">Choose</label>
+              <input class="custom-file-input" type="file" name="filename" id="filename">
+              <br><h2>Choose the show image </h2>
+              <input type="reset" value="clear">
+              <input type="submit" value="Submit">
+            </form>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div id="openFormBtn2" class="b1"><div id=bttn1></div></div>
+
+
+    <div id="popupForm2" class="popup2-form2">
+      <button id="closeFormBtn2" class="close-btn2">×</button>
+
+      <form  action="murugan.php" method="POST" class="popup2-form2-content2">
+        <div ull2>
+          <div class="container2">
+            <div class="screen2">
+              
+            </div>
+          </div>
+      </form>
+
+    </div>
+
+  </div>
+
+  <div class="data-container" id="dataContainer"></div>
+
+  <hr>
+  <div class="footer">
+    <p> <b>copyright 2024 &copy; &nbsp; All Rights Reserved. &nbsp; Northern Uni Vote scope.</b>  
+      <a class="fa fa-envelope" href="" >northernunivote@gmail.com </a>  
+      <a class="fa fa-phone" href="" >0761111222</a>
+	</p> 
+</div>
+
+<button class="support">Support</button>
+
+
+ <script src="js/muruga.js"></script>
+</body>
+
+</html>

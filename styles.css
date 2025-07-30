@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(to bottom, #f4f4f4, #ddd);
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+nav button:hover {
+    transform: scale(1.1);
+}
+
+/* Main Styles */
+main {
+    /* max-width: 800px; */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Contestant Section Styles */
+.contestants {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 20px;
+    justify-content: center;
+    margin-top: 120px;
+}
+
+.contestant {
+    text-align: center;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: all 0.3s ease;
+    border: 2px solid #4CAF50; /* Border color for each contestant box */
+    margin-top: 500px;
+}
+
+.contestant:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.person-img {
+    width: 100%;
+    max-width: 150px;
+    border-radius: 50%;
+}
+
+.contestant-name {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+input[type="number"] {
+    margin-top: 10px;
+    padding: 8px;
+    width: 50px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="number"]:focus {
+    border-color: #4CAF50; /* Change border color on focus */
+    box-shadow: 0 0 10px #4CAF50; /* Add glowing effect on focus */
+    outline: none; /* Remove default focus outline */
+}
+
+/* Feedback Styles */
+.feedback {
+    margin-top: 30px;
+}
+
+#feedback-text {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Feedback Submit Button Styles */
+#submit-feedback-btn {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 15px; /* Adjust padding to make it smaller */
+    border-radius: 5px;
+    font-size: 14px; /* Adjust font size to make it smaller */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block; /* Ensure proper block-level alignment */
+    margin: 20px auto 0; /* Center the button horizontally with top margin */
+    width: 120px; /* Set a fixed width to prevent stretching */
+}
+
+#submit-feedback-btn:hover {
+    background-color: #45a049;
+}
+
+/* Results Table Styles */
+.results-section {
+  margin-top: 50px;
+}
+
+.results-section h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th, table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+table th {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+table tr:hover {
+  background-color: #f5f5f5;
+}

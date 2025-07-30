@@ -1,0 +1,90 @@
+<?php
+require 'config.php';
+?>
+<?php
+session_start();
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset="UTF-8" />
+	<title>Vote scope</title>
+	<link rel="stylesheet" href="css/index_style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/sponsor_style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="header">
+
+<h1>Vote scope</h1>
+
+<img class="img-avatar" src="image/img_avatar.jpg" alt="Avatar">
+
+    <div id="button_container">
+      <a href="Logout.php"><button id="btn"> Logout</button></a>
+    </div>
+</div>
+<div class="topnavi">
+              <a class="fa fa-home" href="index.php" data-scroll-nav="0">Home</a> 
+              <a class="fa fa-music" href="TVshow.php" data-scroll-nav="1">Shows</a> 
+              <a class="fa fa-vote" href="managevote.php" data-scroll-nav="3">Manage vote</a> 
+              <a class="fa fa-vote" href="vote1.php" data-scroll-nav="3">voting</a> 
+              <a class="fa fa-star" href="sponsor.php" data-scroll-nav="4">Sponsor</a> 
+              <a class="fa fa-users" href="aboutus.php" data-scroll-nav="5">About us</a> 
+</div>
+
+<img src="image/syslogo.png" style="width:90px;height:90px;background:none;" alt="logo" class="logo-1"> 
+
+
+<div class="container">
+        <h1>Adding Sponsors</h1>
+        <form action="feedback1.php" method="post">
+            <input type="text" id="username" name="name" placeholder="Name" required>
+            <input type="email" id="email" name="email" placeholder="Email" required>
+            <!-- Removed the textarea for message -->
+            <button type="submit" id="submit" name="submit">Submit Details</button>
+        </form>
+         <br><br>
+        <h2 id="head1"> ALL DETAILS</h2>
+        <table  class="feedback-table">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <!-- Removed the column for Message -->
+                <th>Action</th>
+            </tr>
+        </table>
+    </div>
+    
+    <script>
+        var submit = document.getElementById("submit");
+        var username = document.getElementById("username");
+        var email = document.getElementById("email");
+        var table=document.querySelector(".feedback-table");
+        
+        submit.addEventListener("click",function(event){
+            var text="<tr>";
+            text+="<td>"+username.value+"</td>";
+            text+="<td>"+email.value+"</td>";
+            // Removed the cell for message
+            /* text+="<td>"+<button type='submit' name='delete'>Delete</button>+"</td>";*/
+            text+="</tr>";
+
+            table.innerHTML+=text;
+        });  
+    </script>
+
+<div class="footer">
+    <p> <b>copyright 2024 &copy; &nbsp; All Rights Reserved. &nbsp; Northern Uni Vote scope.</b>  
+      <a class="fa fa-envelope" href="" >northernunivote@gmail.com </a>  
+      <a class="fa fa-phone" href="" >0761111222</a>
+	</p> 
+</div>
+<a class="fa fa-phone-square" href="contactus.php" data-scroll-nav="4">
+    <button class="support">Contact us</button>
+</a>
+</body>
+</html>
