@@ -1,0 +1,199 @@
+:root {
+    --primary: #00897B;
+    --dark: #00695C;
+    --light: #4DB6AC;
+    --accent: #B2DFDB;
+    --text: #E0F2F1;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 80px;
+}
+
+/* ===== Navigation Styles ===== */
+
+
+.support {
+    position: fixed;
+    bottom: 90px;
+    right: 1rem;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.support:hover {
+    background-color: var(--dark);
+}
+
+.about-section {
+    padding: 2rem 0;
+    background-color: white;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.container h1 {
+    color: var(--dark);
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.container p {
+    font-size: 1rem;
+    text-align: justify;
+    margin-bottom: 1.5rem;
+}
+
+.contact-info, .social-media {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.contact-info h3, .social-media h3 {
+    color: var(--dark);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.contact-info ul, .social-media ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.contact-info li, .social-media li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex: 1 1 250px;
+}
+
+.icon {
+    width: 40px;
+    height: 40px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dark);
+}
+
+.contact-info li:hover .icon, .social-media li:hover .icon {
+    background-color: var(--primary);
+    color: white;
+}
+
+.marquee {
+    background-color: white;
+    padding: 1rem 0;
+    margin: 1rem 0;
+}
+
+.marquee img {
+    height: 80px;
+    margin: 0 1rem;
+}
+
+@media (max-width: 992px) {
+    .topnavi a {
+        padding: 0.8rem 1rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .topnavi {
+        flex-wrap: wrap;
+    }
+
+    .marquee img {
+        height: 80px;
+        margin: 0 0.8rem;
+    }
+
+    .support {
+        bottom: 80px;
+        width: 40px;
+        height: 40px;
+        font-size: 0;
+        border-radius: 50%;
+    }
+
+    .support::before {
+        content: "\f075";
+        font-family: "FontAwesome";
+        font-size: 1rem;
+    }
+}
+
+/* ===== Animations ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+body {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* ===== Professional Enhancements ===== */
+::selection {
+    background-color: var(--light);
+    color: white;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--dark);
+}
+
+/* ===== Content Container ===== */
+.main-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    animation: fadeInUp 0.8s ease-out;
+}
