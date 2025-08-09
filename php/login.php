@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         switch ($user['type']) {
             case 'admin':
-                header('Location: ../html/admin_register.php');
+                header('Location: ../html/admin_index.php');
                 break;
             case 'user':
                 header('Location: ../html/index.php');

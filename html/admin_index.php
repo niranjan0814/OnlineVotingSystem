@@ -4,6 +4,7 @@ require '../php/config.php'; // Include database connection
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,18 +12,12 @@ require '../php/config.php'; // Include database connection
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
 <body>
     <!-- Header Placeholder (will be loaded via PHP or JS) -->
     <?php include 'admin_header.php'; ?> <!-- Use PHP include instead of JS for now -->
 
-    <div>
-        <marquee>
-            <img src="../images/add1.png" width="500px" alt="Advertisement">
-            <img src="../images/add2.jpeg" width="300px" alt="Advertisement">
-            <img src="../images/add1.jpeg" width="170px" alt="Advertisement">
-            <img src="../images/add5.jpeg" width="250px" alt="Advertisement">
-        </marquee>
-    </div>
+
     <div>
         <h1 id="heading">Welcome to VoteScopeNU</h1>
     </div>
@@ -39,4 +34,5 @@ require '../php/config.php'; // Include database connection
             .catch(error => console.error('Error loading footer:', error));
     </script>
 </body>
+
 </html>

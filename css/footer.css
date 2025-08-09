@@ -1,42 +1,61 @@
 .footer {
-    background: linear-gradient(to right, var(--dark), var(--primary));
-    color: var(--text);
-    text-align: center;
-    padding: 1.5rem 1rem;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(to right, var(--dark), var(--primary));
+  color: var(--text);
+  text-align: center;
+  padding: 1.5rem 1rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.1);
 }
 
 .footer p {
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    font-size: 0.9rem;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-size: 0.9rem;
 }
 
 .footer a {
-    color: var(--accent);
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  font-weight: 500;
 }
 
 .footer a:hover {
-    color: white;
-    text-decoration: underline;
+  color: white;
+  text-decoration: underline;
+}
+.support {
+  position: fixed;
+  bottom: 90px;
+  right: 1rem;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.support:hover {
+  background-color: var(--dark);
 }
 
 @media (max-width: 768px) {
-    .footer p {
-        gap: 0.8rem;
-        font-size: 0.8rem;
-    }
+  .footer p {
+    gap: 0.8rem;
+    font-size: 0.8rem;
+  }
 }

@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin/Contestant Registration - Vote Scope</title>
     <link rel="stylesheet" href="../css/admin_register.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Removed Font Awesome CDN -->
 </head>
 
 <body>
@@ -17,6 +18,8 @@
     require '../php/config.php';
 
     // Handle delete action
+    $success_message = '';
+    $error_message = '';
     if (isset($_GET['delete'])) {
         $id = $_GET['delete'];
         $query = "DELETE FROM register WHERE id = ?";
@@ -30,28 +33,7 @@
         mysqli_stmt_close($stmt);
     }
 
-    // Handle form submission
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $username = $_POST['username'];
-        $email = $_POST['email'];
-        $phone = $_POST['phone'];
-        $NIC = $_POST['NIC'];
-        $address = $_POST['address'];
-        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $type = $_POST['type'];
-
-        $query = "INSERT INTO register (username, email, phone, NIC, address, password, type) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        $stmt = mysqli_prepare($con, $query);
-        mysqli_stmt_bind_param($stmt, "sssssss", $username, $email, $phone, $NIC, $address, $password, $type);
-
-        if (mysqli_stmt_execute($stmt)) {
-            $success_message = "User registered successfully!";
-        } else {
-            $error_message = "Error registering user: " . mysqli_error($con);
-        }
-
-        mysqli_stmt_close($stmt);
-    }
+    // No form submission handling here; moved to adminregister.php for AJAX
     ?>
 
     <main>
@@ -60,54 +42,49 @@
                 <h1>User Management Dashboard</h1>
                 <p>Manage admin and contestant accounts for the voting system</p>
 
+                <!-- Temporary Success/Error Message with Close Button -->
+                <div id="statusMessage" class="status-message" style="display: none;">
+                    <span id="statusText"></span>
+                    <button class="close-btn">&times;</button>
+                </div>
+
                 <button id="toggleRegister" class="btn btn-primary">
-                    <i class="fas fa-user-plus"></i> Register New User
+                    ➕ Register New User
                 </button>
 
                 <div id="registrationForm" class="registration-form">
-                    <h2><i class="fas fa-user-edit"></i> User Registration Form</h2>
+                    <h2>✏️ User Registration Form</h2>
                     <p>Fill in the details below to register a new admin or contestant</p>
 
-                    <?php if (isset($success_message)): ?>
-                        <div class="status-message status-success">
-                            <i class="fas fa-check-circle"></i> <?php echo $success_message; ?>
-                        </div>
-                    <?php endif; ?>
-
-                    <?php if (isset($error_message)): ?>
-                        <div class="status-message status-error">
-                            <i class="fas fa-exclamation-circle"></i> <?php echo $error_message; ?>
-                        </div>
-                    <?php endif; ?>
-
-                    <form action="admin_register.php" method="POST" id="registrationFormAction">
+                    <form action="../php/adminregister.php" method="POST" id="registrationFormAction"
+                        enctype="multipart/form-data">
                         <div class="form-group">
-                            <label for="username"><i class="fas fa-user"></i> Username:</label>
+                            <label for="username">👤 Username:</label>
                             <input type="text" id="username" name="username" required placeholder="Enter username">
                         </div>
 
                         <div class="form-group">
-                            <label for="email"><i class="fas fa-envelope"></i> Email:</label>
+                            <label for="email">✉️ Email:</label>
                             <input type="email" id="email" name="email" required placeholder="Enter email address">
                         </div>
 
                         <div class="form-group">
-                            <label for="phone"><i class="fas fa-phone"></i> Phone:</label>
+                            <label for="phone">📞 Phone:</label>
                             <input type="tel" id="phone" name="phone" required placeholder="Enter phone number">
                         </div>
 
                         <div class="form-group">
-                            <label for="NIC"><i class="fas fa-id-card"></i> NIC:</label>
+                            <label for="NIC">🪪 NIC:</label>
                             <input type="text" id="NIC" name="NIC" required placeholder="Enter national ID number">
                         </div>
 
                         <div class="form-group">
-                            <label for="address"><i class="fas fa-map-marker-alt"></i> Address:</label>
+                            <label for="address">📍 Address:</label>
                             <textarea id="address" name="address" required placeholder="Enter full address"></textarea>
                         </div>
 
                         <div class="form-group">
-                            <label for="password"><i class="fas fa-lock"></i> Password:</label>
+                            <label for="password">🔒 Password:</label>
                             <input type="password" id="password" name="password" required placeholder="Create password">
                             <div class="password-strength">
                                 <div class="password-strength-bar" id="password-strength-bar"></div>
@@ -115,13 +92,13 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="confirm-password"><i class="fas fa-lock"></i> Confirm Password:</label>
+                            <label for="confirm-password">🔒 Confirm Password:</label>
                             <input type="password" id="confirm-password" name="confirm-password" required
                                 placeholder="Confirm password">
                         </div>
 
                         <div class="form-group">
-                            <label for="type"><i class="fas fa-user-tag"></i> User Type:</label>
+                            <label for="type">🏷️ User Type:</label>
                             <select id="type" name="type" required>
                                 <option value="">Select user type</option>
                                 <option value="admin">Admin</option>
@@ -131,17 +108,17 @@
 
                         <div class="action-buttons">
                             <button type="submit" class="btn btn-success">
-                                <i class="fas fa-save"></i> Register User
+                                💾 Register User
                             </button>
                             <button type="reset" class="btn btn-warning">
-                                <i class="fas fa-undo"></i> Reset Form
+                                ↺ Reset Form
                             </button>
                         </div>
                     </form>
 
                     <?php if (!isset($_SESSION['type']) || $_SESSION['type'] !== 'admin'): ?>
                         <div class="status-message status-warning">
-                            <i class="fas fa-exclamation-triangle"></i> Only admins can register new users.
+                            ⚠️ Only admins can register new users.
                         </div>
                     <?php endif; ?>
                 </div>
@@ -149,7 +126,7 @@
                 <?php if (isset($_SESSION['type']) && $_SESSION['type'] === 'admin'): ?>
                     <div class="search-filter">
                         <div class="search-box">
-                            <i class="fas fa-search"></i>
+
                             <input type="text" id="searchInput" placeholder="Search users...">
                         </div>
                         <div class="filter-group">
@@ -194,8 +171,8 @@
                                         echo "<td>" . htmlspecialchars($user['address']) . "</td>";
                                         echo "<td><span class='badge'>" . htmlspecialchars($user['type']) . "</span></td>";
                                         echo "<td class='actions'>";
-                                        echo "<button class='btn btn-primary edit-btn' data-id='" . $user['id'] . "'><i class='fas fa-edit'></i> Edit</button>";
-                                        echo "<button class='btn btn-danger delete-btn' data-id='" . $user['id'] . "'><i class='fas fa-trash'></i> Delete</button>";
+                                        echo "<button class='btn btn-primary edit-btn' data-id='" . $user['id'] . "'>✏️ Edit</button>";
+                                        echo "<button class='btn btn-danger delete-btn' data-id='" . $user['id'] . "'>🗑️ Delete</button>";
                                         echo "</td>";
                                         echo "</tr>";
                                     }
@@ -209,7 +186,7 @@
                     </div>
                 <?php else: ?>
                     <div class="status-message status-warning">
-                        <i class="fas fa-exclamation-triangle"></i> Access denied. Only admins can view registered users.
+                        ⚠️ Access denied. Only admins can view registered users.
                     </div>
                 <?php endif; ?>
             </div>
@@ -220,7 +197,7 @@
     <div class="modal" id="editModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2><i class="fas fa-user-edit"></i> Edit User</h2>
+                <h2>✏️ Edit User</h2>
                 <button class="close-modal">&times;</button>
             </div>
             <form id="editUserForm">
@@ -250,6 +227,7 @@
                     <select id="editType" name="type" required>
                         <option value="admin">Admin</option>
                         <option value="contestant">Contestant</option>
+                        <option value="user">User</option>
                     </select>
                 </div>
                 <div class="modal-footer">
@@ -264,7 +242,7 @@
     <div class="modal" id="deleteModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2><i class="fas fa-exclamation-triangle"></i> Confirm Deletion</h2>
+                <h2>⚠️ Confirm Deletion</h2>
                 <button class="close-modal">&times;</button>
             </div>
             <p>Are you sure you want to delete this user? This action cannot be undone.</p>
@@ -276,9 +254,7 @@
     </div>
 
     <!-- Floating Action Button -->
-    <div class="fab" id="fabButton" title="Quick Actions">
-        <i class="fas fa-bolt"></i>
-    </div>
+
 
     <!-- Footer -->
     <div id="footer"></div>
@@ -313,6 +289,36 @@
             } else {
                 strengthBar.classList.add('strength-strong');
             }
+        });
+
+        // Handle success/error message display and close button
+        document.addEventListener('DOMContentLoaded', function () {
+            const statusMessage = document.getElementById('statusMessage');
+            const statusText = document.getElementById('statusText');
+            const closeBtn = document.querySelector('.close-btn');
+
+            <?php if (!empty($success_message)): ?>
+                statusMessage.classList.add('status-success');
+                statusText.textContent = '<?php echo addslashes($success_message); ?>';
+                statusMessage.style.display = 'block';
+                <?php unset($success_message); // Clear after setting ?>
+            <?php elseif (!empty($error_message)): ?>
+                statusMessage.classList.add('status-error');
+                statusText.textContent = '<?php echo addslashes($error_message); ?>';
+                statusMessage.style.display = 'block';
+                <?php unset($error_message); // Clear after setting ?>
+            <?php endif; ?>
+
+            closeBtn.addEventListener('click', function () {
+                statusMessage.style.display = 'none';
+            });
+
+            // Auto-hide after 5 seconds if not closed manually
+            setTimeout(() => {
+                if (statusMessage.style.display === 'block') {
+                    statusMessage.style.display = 'none';
+                }
+            }, 5000);
         });
     </script>
 </body>

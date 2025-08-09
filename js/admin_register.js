@@ -4,6 +4,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const registrationForm = document.getElementById('registrationForm');
 
     if (toggleRegister && registrationForm) {
+        // Set initial state if not defined
+        if (!registrationForm.style.display) {
+            registrationForm.style.display = 'none';
+        }
         toggleRegister.addEventListener('click', function() {
             registrationForm.style.display = registrationForm.style.display === 'none' ? 'block' : 'none';
             this.innerHTML = registrationForm.style.display === 'none' ?
@@ -27,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
             loading.textContent = 'Processing...';
             this.appendChild(loading);
 
-            fetch('adminregister.php', {
+            fetch('../php/adminregister.php', {
                 method: 'POST',
                 body: formData
             })
@@ -42,8 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     toggleRegister.classList.remove('btn-warning');
                     toggleRegister.classList.add('btn-primary');
                     // Optionally update the user table dynamically instead of reload
-                    // For now, reload to reflect new data
-                    location.reload();
+                    location.reload(); // Reload to reflect new data
                 } else {
                     alert('Error: ' + data.message);
                 }
@@ -179,7 +182,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const fabButton = document.getElementById('fabButton');
     if (fabButton) {
         fabButton.addEventListener('click', function() {
-            // Scroll to form if it's visible, otherwise toggle it
             if (registrationForm.style.display === 'block') {
                 registrationForm.scrollIntoView({ behavior: 'smooth' });
             } else {
